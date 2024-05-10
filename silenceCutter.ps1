@@ -9,7 +9,6 @@ $SILENCE_DURATION = 0.5
 $loglevel = "warning"
 # 出力ディレクトリ名
 $rootDirName = "SilenceCut"
-$rootDir = ".\" + $rootDirName
 # 出力ファイルのサフィックス
 $suffix = "_silenceCut"
 
@@ -64,7 +63,7 @@ function DetectSilence {
 
 
 ### メイン処理 ###
-# Set-Location -Path 'D:\data\VJ\test\'
+$rootDir = ".\" + $rootDirName
 Get-ChildItem -Path . -Recurse -File | ForEach-Object {
     $file = $_
 
