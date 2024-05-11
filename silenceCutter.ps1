@@ -86,6 +86,9 @@ Get-ChildItem -Path . -Recurse -File | ForEach-Object {
     # 最終出力パス定義
     $outputPath = $outputDir + "\" + $file.BaseName + $suffix + $file.Extension
 
+    # 処理済ファイルが存在する場合はスキップ
+    if (Test-Path -Path $outputPath) { return }
+
     # 一時ファイル定義
     $cutFile = $env:TEMP + "\" + $file.BaseName + "_cut" + $file.Extension
     $segmentFile = $env:TEMP + "\segment_%04d" + $file.Extension
